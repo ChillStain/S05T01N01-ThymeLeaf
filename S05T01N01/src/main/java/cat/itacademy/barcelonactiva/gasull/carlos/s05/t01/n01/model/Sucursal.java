@@ -29,7 +29,9 @@ public class Sucursal {
     public Sucursal() {
     }
 
-    public Sucursal(String alfajores_antonio, String argentina){
+    public Sucursal(String nombre, String pais){
+        this.nombreSucursal = nombre;
+        this.paisSucursal = pais;
 
     }
     public Sucursal(String nombre, String pais,String tipoSucursal ){
