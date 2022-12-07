@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Sucursal</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Control de sucursales</a>
+    <div class="collapse navbar-collapse" id="collapisbleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="@{/sucursales}">Control de sucursales </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center">Agregar Sucursal</h1>
+            <div class="card-body">
+                <form th:action="@{/sucursales}" th:object="${sucursal}" method="POST">
+                    <div class="form-group">
+                        <label>Nombre : </label>
+                        <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre de la sucursal : " required>
+
+
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label>Pais : </label>
+                        <input type="text" name="Pais" th:field="*{pais}" class="form-control" placeholder="Pais de la sucursal :" required>
+
+
+                    </div>
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success">Guardar</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

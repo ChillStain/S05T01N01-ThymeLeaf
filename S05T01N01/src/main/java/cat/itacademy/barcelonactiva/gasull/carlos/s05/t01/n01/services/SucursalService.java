@@ -5,19 +5,50 @@ import cat.itacademy.barcelonactiva.gasull.carlos.s05.t01.n01.model.Sucursal;
 import cat.itacademy.barcelonactiva.gasull.carlos.s05.t01.n01.repository.SucursalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-@Transactional
+
 public class SucursalService implements SucursalInterface {
 
     @Autowired
     private SucursalRepository sucursalRepository;
 
+
+    //ThyMeLeaf
+
+    @Override
+    public List<Sucursal> listAllSucursal() {
+
+        return sucursalRepository.findAll();
+    }
+
+    @Override
+    public Sucursal saveSucursal(Sucursal sucursal) {
+        return sucursalRepository.save(sucursal);
+    }
+
+    @Override
+    public Sucursal getSucursalById(Long id) {
+        return sucursalRepository.findById(id).get();
+    }
+
+    @Override
+    public Sucursal updateSucursal(Sucursal sucursal) {
+        return sucursalRepository.save(sucursal);
+    }
+
+    @Override
+    public void deleteSucursal(Long id) {
+        sucursalRepository.deleteById(id);
+
+    }
+
+
+    //DTO
 
     public Sucursal agregarSucursal(SucursalDTO sucursalDto){
         Sucursal sucursal = new Sucursal
@@ -48,8 +79,4 @@ public class SucursalService implements SucursalInterface {
     }
 
 
-    @Override
-    public List<Sucursal> listAllSucursal() {
-        return null;
-    }
 }

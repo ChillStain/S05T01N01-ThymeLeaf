@@ -24,18 +24,31 @@
     <div class="row">
         <h1>Lista de sucursales</h1>
     </div>
-    <table class="table">
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/sucursales/new}" class="btn btn-primary btn-sm mb3">Añadir Sucursal
+
+            </a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <tr>
             <th>Nombre de la Sucursal</th>
             <th>Pais de la Sucursal</th>
+            <th>Tipo de Sucursal</th>
+            <th>Acciones</th>
 
         </tr>
         </thead>
         <tbody>
-            <tr th:each="sucursal : ${todasSucursales}">
+            <tr th:each="sucursal : ${sucursales}">
                 <td th:text="${sucursal.nombreSucursal}">Nombre de la Sucursal</td>
                 <td th:text="${sucursal.paisSucursal}">Pais de la Sucursal</td>
+                <td th:text="${sucursal.tipoSucursal}">Tipo de Sucursal</td>
+
+                <a th:href="@{/sucursales/edit/{id}(id=${sucursal.id})}" class="btn btn-info">Edit</a>
+                <a th:href="@{/sucursales/{id}(id=${sucursal.id})}" class="btn btn-danger">Delete</a>
 
             </tr>
         </tbody>

@@ -21,10 +21,12 @@ public class S05T01N01GasullCarlosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		/*
 		Sucursal sucursal1 = new Sucursal("Lápices Barcelona", "españa");
 		sucursalRepository.save(sucursal1);
 
 		Sucursal sucursal2 = new Sucursal("Draws Carlitos", "mexico");
 		sucursalRepository.save(sucursal2);
+		  */
 	}
 }
