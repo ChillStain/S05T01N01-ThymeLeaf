@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/sucursales")
+
 public class SucursalController {
 
     @Autowired
