@@ -6,13 +6,9 @@ import cat.itacademy.barcelonactiva.gasull.carlos.s05.t01.n01.model.Sucursal;
 import cat.itacademy.barcelonactiva.gasull.carlos.s05.t01.n01.services.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @Controller
@@ -31,23 +27,24 @@ public class SucursalController {
     }
 
 
-    @PostMapping("/agregar")
-    public ResponseEntity<?> agregarSucursal(@RequestBody SucursalDTO sucursalDto){
 
-    return ResponseEntity.status(HttpStatus.CREATED).body(sucursalService.agregarSucursal(sucursalDto));
+    @PostMapping("/agregar")
+    public String agregarSucursal(@RequestBody SucursalDTO sucursalDto){
+
+    return "add_sucursal";
     }
 
     @GetMapping("/sucursal/{id}")
-    public ResponseEntity<?> getSucursal (@PathVariable Long id) throws Exception {
+    public String getSucursal (@PathVariable Long id) throws Exception {
 
-        return ResponseEntity.status(HttpStatus.OK).body(sucursalService.getSucursal(id));
+        return "edit_sucursal";
 
     }
 
-    @GetMapping("/todasSucursales")
+    /*@GetMapping("/todasSucursales")
     public List<Sucursal> getAllSucursal (){
         return sucursalService.getAllSucursal();
-    }
+    }*/
 
     @PutMapping ("/actualizar/{id}")
     public String actualizarSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
@@ -65,17 +62,17 @@ public class SucursalController {
             }
             sucursalService.actualizarSucursal(sucursalNew);
         }
-        return "Sucursal actualizada";
+        return "redirect:/sucursales";
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public String eliminarSucursal (@PathVariable Long id){
+    public String deleteSucursal (@PathVariable Long id){
         if(!sucursalService.findById(id)){
             return "No se encuentra la sucursal con id: "+id;
         }else{
             sucursalService.eliminarSucursal(id);
         }
-        return "la sucursal con id "+id+" se ha eliminado";
+        return "redirect:/sucursales";
     }
 
 
